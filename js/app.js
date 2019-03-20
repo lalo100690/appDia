@@ -4,11 +4,18 @@ function init(){
 	i=0;
 	btnLogout = document.getElementById('logout');
 	btnLogout.addEventListener('click',logout, true);
-	loadDatos();
-	loadFichas();
+	loadFichas()
+	cargaDatos();
+}
+
+function cargaDatos(){
+	setTimeout(function(){
+		loadDatos();
+	},5000)
 }
 
 function loadDatos(){
+	console.log('again')
 	u = localStorage.getItem('expediente');
 
 	ajax = new XMLHttpRequest();
@@ -23,10 +30,13 @@ function loadDatos(){
 			document.getElementById('mis-latas').innerHTML = datos['misLatas'].total;
 			document.getElementById('mis-pet').innerHTML = datos['misPet'].total;
 			document.getElementById('total-latas').innerHTML = datos['totalLatas'].total;
-			document.getElementById('total-pet').innerHTML = datos['totalPet'].total;
+			document.getElementById('total-pet').innerHTML = datos['totalPet'].total; 
+			cargaDatos();
 		}
 	}	
 }
+
+
 
 function loadFichas(){
 	fichas = document.querySelectorAll('.ficha');
