@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<button onclick="enviar()">test</button>
+
+	<script type="text/javascript">
+		
+		function enviar(){
+			ajax = new XMLHttpRequest();
+			ajax.open('POST','http://www.lalocaracheo.com/reciclapp/mandarDatos.php');
+			ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			ajax.send("id=algo&material=1");
+			ajax.onreadystatechange = function(){
+				if (ajax.readyState == 4 && ajax.status == 200) {
+					alert(ajax.responseText);
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>
